@@ -6,6 +6,7 @@ const firebaseConfig = {
     projectId: "bookstore-app-c93df",
     storageBucket: "bookstore-app-c93df.firebasestorage.app",
     messagingSenderId: "317169085253",
-    appId: "1:317169085253:web:e8bb905192f841b06dec2c"
+    appId: "1:317169085253:web:e8bb905192f841b06dec2c",
+    databseURL:"https://bookstore-app-c93df-default-rtdb.firebaseio.com",
   };
-const app=initializeApp(firebaseConfig)  
+export const app=initializeApp(firebaseConfig)  
