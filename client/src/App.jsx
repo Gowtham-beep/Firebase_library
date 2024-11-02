@@ -1,21 +1,18 @@
-import {getDatabase,ref,set} from "firebase/database"
+import {getAuth,createUserWithEmailAndPassword} from 'firebase/auth'
 import {app} from "./firebase"
+import Signup from './pages/signup'
+import Signin from './pages/signin'
 
+const auth=getAuth(app)
 
-function writeUserData(username,age){
-  const db=getDatabase(app)
-  set(ref(db,"user/"),{
-    username:"Gowtham",
-    age:21,
-  })
-}
 function App() {
   return (
     <>
     <center>
       <h1>Book Store</h1>
-      <button onClick={writeUserData}>Put Data</button>
-    </center>
+      <Signup/>
+      <Signin/>
+      </center>
     </>
   )
 }

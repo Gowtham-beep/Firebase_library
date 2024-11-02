@@ -1,5 +1,6 @@
 import {initializeApp} from "firebase/app"
 
+
 const firebaseConfig = {
     apiKey: "AIzaSyB0sef8Foz6-Wx4WewPf9yQ6C1Sh46Q4uA",
     authDomain: "bookstore-app-c93df.firebaseapp.com",
