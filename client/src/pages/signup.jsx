@@ -1,15 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { getAuth,createUserWithEmailAndPassword } from "firebase/auth";
-import { app } from "../firebase";
+import {useFirebase,} from "../context/firebase"
 
-const auth=getAuth(app)
+
 const Signup=()=>{
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
-    const createUSer=()=>{
-        createUserWithEmailAndPassword(auth,email,password).then(alert('user creted successfull'))
-    }
+    const Firebase=useFirebase()
+    console.log("Firebase",Firebase)
     return(
         <div className="sign-up-page">
             <h1>Signup page</h1>
@@ -27,7 +25,7 @@ const Signup=()=>{
             type="password" 
             placeholder="Enter yoir password here"/>
             <br/>
-            <button onClick={createUSer}>Sign UP</button>
+            <button onClick={()=>Firebase.signupUserWithEmailAndPassword(email,password)}>Signup</button>
         </div>
     )
 }

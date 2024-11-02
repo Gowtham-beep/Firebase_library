@@ -1,9 +1,7 @@
 import {React,useState} from "react"
-import { app } from "../firebase"
 import { getAuth,signInWithEmailAndPassword } from "firebase/auth"
 
 const Signin=()=>{
-    const auth=getAuth(app)
     const[emial,setEmial]=useState('')
     const[password,setPassword]=useState('')
 
