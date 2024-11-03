@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import {useFirebase,} from "../context/firebase"
+import {useFirebase,FirebaseAuth} from "../context/firebase"
+import {GoogleAuthProvider,signInWithPopup} from 'firebase/auth'
+
 
 
 const Signup=()=>{
@@ -8,6 +10,14 @@ const Signup=()=>{
     const [password,setPassword]=useState('')
     const Firebase=useFirebase()
     console.log("Firebase",Firebase)
+    
+    //Signin with google
+    const googleProvider = new GoogleAuthProvider()
+    const signupWithGoogle=()=>{
+        signInWithPopup(FirebaseAuth,googleProvider)
+    }
+
+
     return(
         <div className="sign-up-page">
             <h1>Signup page</h1>
@@ -25,6 +35,7 @@ const Signup=()=>{
             type="password" 
             placeholder="Enter yoir password here"/>
             <br/>
+            <button onClick={signupWithGoogle}>Signin with Google</button>
             <button onClick={()=>Firebase.signupUserWithEmailAndPassword(email,password)}>Signup</button>
         </div>
     )

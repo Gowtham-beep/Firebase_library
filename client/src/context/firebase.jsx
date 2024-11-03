@@ -19,7 +19,7 @@ const FirebaseContext=createContext(null)
 //custom hook to consume the context
 export const useFirebase=()=>useContext(FirebaseContext)
 
-const FirebaseAuth=getAuth(FirebaseApp)
+export const FirebaseAuth=getAuth(FirebaseApp)
 
 //context provider
 export const FirebaseProvider=(props)=>{
