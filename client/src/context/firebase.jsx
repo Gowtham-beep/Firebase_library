@@ -1,6 +1,6 @@
 import { createContext,useContext} from "react";
 import {initializeApp} from "firebase/app"
-import {getAuth,createUserWithEmailAndPassword} from 'firebase/auth'
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: "AIzaSyB0sef8Foz6-Wx4WewPf9yQ6C1Sh46Q4uA",
@@ -16,7 +16,7 @@ const FirebaseApp=initializeApp(firebaseConfig)
 const FirebaseContext=createContext(null)
 
 
-//custom hook
+//custom hook to consume the context
 export const useFirebase=()=>useContext(FirebaseContext)
 
 const FirebaseAuth=getAuth(FirebaseApp)
@@ -27,9 +27,18 @@ export const FirebaseProvider=(props)=>{
 const signupUserWithEmailAndPassword=(email,password)=>{
   return createUserWithEmailAndPassword(FirebaseAuth,email,password)
   }
-  return <FirebaseContext.Provider value={{signupUserWithEmailAndPassword}}>
+//prop function to signin
+const signinUserWithEmailAndPassword=(email,password)=>{
+  signInWithEmailAndPassword(FirebaseAuth,email,password)
+  .then((val)=>alert("signin success"))
+  .catch((error)=>console.log("signin error:",error))
+}
+
+  return <>
+  <FirebaseContext.Provider value={{signupUserWithEmailAndPassword,signinUserWithEmailAndPassword}}>
     {props.children}
   </FirebaseContext.Provider>
+  </>
 }
 
 

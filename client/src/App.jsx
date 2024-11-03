@@ -10,7 +10,7 @@ function App() {
     <center>
       <h1>Book Store</h1>
       <Signup/>
-      {/* <Signin/> */}
+      <Signin/>
       </center>
     </>
   )

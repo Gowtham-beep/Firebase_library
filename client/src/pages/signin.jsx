@@ -1,16 +1,10 @@
 import {React,useState} from "react"
-import { getAuth,signInWithEmailAndPassword } from "firebase/auth"
+import {useFirebase} from '../context/firebase'
 
 const Signin=()=>{
     const[emial,setEmial]=useState('')
     const[password,setPassword]=useState('')
-
-    const signinUser=()=>{
-        signInWithEmailAndPassword(auth,emial,password)
-        .then((val)=>{console.log("Signin Success")})
-        .catch((error)=>{console.log(error)})
-    }
-
+    const Firebase=useFirebase()
 return(
     <div className="sign-in-page">
         <h1>Signin page</h1>
@@ -25,10 +19,10 @@ return(
         <input 
         onChange={(e)=>setPassword(e.target.value)}
         value={password}
-        type="passwprd" 
+        type="password" 
         placeholder="Enter your Password here"></input>
         <br/>
-        <button onClick={signinUser}>Sign in</button>
+        <button onClick={()=>Firebase.signinUserWithEmailAndPassword(emial,password)}>Sign in</button>
     </div>
 )
 }
